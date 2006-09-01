@@ -6,7 +6,7 @@
 	<property name="tmp" location="tmp" />
 	<property name="lib" location="lib" />
 	<property name="external" location="external" />
-	<property name="jar" location="${lib}/bcel-5.1-fixes.jar" />
+	<property name="jar" location="${lib}/bcel-5.1-fixes-1.0.jar" />
 
 	<path id="external_jars">
 		<fileset dir="${external}">
