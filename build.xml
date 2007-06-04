@@ -22,7 +22,7 @@
 		<mkdir dir="${tmp}" />
 	</target>
 
-	<target name="compile" depends="init" description="compile the source ">
+	<target name="compile" depends="init, clean" description="compile the source ">
 		<!-- Compile the java code from ${src} into ${tmp} -->
 		<javac srcdir="${src}" destdir="${tmp}" debug="on" >
 			<classpath refid="external_jars" />
@@ -33,8 +33,11 @@
 		<!-- Create the distribution directory -->
 		<mkdir dir="${lib}" />
 
+		<!-- copy original bcel jar. -->
+		<copy file="external/bcel-5.1.jar" tofile="${jar}"/>
+
 		<!-- Put everything in ${tmp} into the jar file -->
-		<jar jarfile="${jar}" basedir="${tmp}" />
+		<jar jarfile="${jar}" update="yes" basedir="${tmp}" includes="**/*.class"/>
 
 		<!-- And delete the build dir -->
 		<delete dir="${tmp}" />
